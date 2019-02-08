@@ -2,8 +2,8 @@
 
 namespace kernel;
 
-class kernel {
-    private $version = "0.1.1.0001";
+class Kernel {
+    public const version = "0.1.2.0001";
     private $const = array();
 
     /**
@@ -19,7 +19,7 @@ class kernel {
             'Invalid CONST LIST TYPE(arrays expected, '.gettype($constList).' found)!'
         );
         $this->const = $constList;
-        $this->setConst('_VERSION_', $this->version);
+        $this->setConst('_VERSION_', Kernel::version);
 
         $this->checkKernelFoundationVar('_ROOT_');
         $this->checkKernelFoundationVar('_FOUNDATION_DIRS_');
@@ -79,7 +79,7 @@ class kernel {
      * @param string $fileName The filename in the given directory.
      * @return string The full path of the specific file.
      */
-    private function getFoundationModuleRoute(string $dirName, string $fileName = '') {
+    public function getFoundationModuleRoute(string $dirName, string $fileName = '') {
         if (!isset($this->getConst('_FOUNDATION_DIRS_')[$dirName])) return NULL;
         $result = $this->getAbsoluteLocation($this->getConst('_FOUNDATION_DIRS_')[$dirName]."/$fileName");
         if (!is_dir($result) && !is_file($result)) {

@@ -1,7 +1,7 @@
 <?php
-    require __DIR__.'/kernel/class/kernel.php';
+    require __DIR__ . '/kernel/class/Kernel.php';
 
-    $kernel = new \kernel\kernel(array(
+    $kernel = new \kernel\Kernel(array(
         '_ROOT_' => __DIR__,
         '_FOUNDATION_DIRS_' => array(
             'class' => '/kernel/class',
@@ -10,6 +10,7 @@
             'css' => '/kernel/css',
             'js' => '/kernel/js',
             'models' => '/kernel/models',
+            'routes' => '/kernel/routes',
             'resource' => '/kernel/resource',
             'views' => '/kernel/views'
         )

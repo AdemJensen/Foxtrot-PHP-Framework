@@ -6,11 +6,11 @@ use kernel\ControllerBase;
 
 class SampleController extends ControllerBase {
     public function run() {
-        echo "SUCCESS";
+        echo 'SUCCESS<br/>$_GET content: ';
+        var_dump($_GET);
     }
 
     public function index() {
-        global $kernel;
-        echo '<h1>It worked!</h1><br/>Foxtrot Framework 0.1<br/>Kernel version '.$kernel->getConst('_VERSION_');
+        return view('index');
     }
 }

@@ -4,6 +4,7 @@ namespace kernel;
 
 class Router {
     private $data = array();
+    public const version = "0.1.3.0001";
     private const VARIABLE_MATCH = '/\[\{(.*?)\}\]/';
 
     /**
@@ -85,7 +86,8 @@ class Router {
         if (!class_exists($controllerName)) $this->reportExecutionError("Controller \'$response[0]\' not found!");
         $controller = new $controllerName();    //Make an instance to support the controller.
         if (!method_exists($controller, $response[1])) $this->reportExecutionError("Method \'$response[1]\' not found!");
-        return call_user_func(array($controller, $response[1]));    //Make the routing procedure.
+        $viewFile = call_user_func(array($controller, $response[1]));    //Make the routing procedure.
+        if ($viewFile) require_once $viewFile;
     }
 
     /**
